@@ -1,7 +1,10 @@
-@extends("admin.adminLayouts.sidebarlayout")
+@extends("admin.adminLayouts.dashboardLayout")
 
 @section("content")
-
-<h1>SONO IL CONTENUTO DELLA DASHBOARD</h1>
-
+    
+        <div class="py-5">
+            <h1 class="text-center">DASHBOARD CONTENT</h1>
+        </div>
+    
+</div>
 @endsection
