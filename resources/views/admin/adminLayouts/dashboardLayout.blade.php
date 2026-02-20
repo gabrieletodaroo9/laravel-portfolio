@@ -9,7 +9,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    @include("partials.header")
+    <!-- @include("partials.header") -->
     <main class="flex-grow-1 d-flex flex-column">
         <div class="row g-0 flex-grow-1">
             <div class="col-2 bg-light shadow-sm border-end">
@@ -18,17 +18,15 @@
                     <ul class="p-5 pt-2 list-unstyled">
                         <li class="mb-2"><a href="{{route('admin.dashboard')}}" class="text-decoration-none text-dark">Home</a></li>
                         <li class="mb-2"><a href={{route('admin.profile')}} class="text-decoration-none text-dark">Gestisci profilo</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-dark">Gestisci progetti</a></li>
+                        <li class="mb-2"><a href={{route('projects.index')}} class="text-decoration-none text-dark">Gestisci progetti</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-8">
+            <div class="col-10">
             @yield("content")
             </div>
-            <div class="col-2">
-            </div>
     </main>
-    @include("partials.footer")
+    <!-- @include("partials.footer") -->
 
 
 </body>
