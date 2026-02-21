@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::orderBy('created_at', 'desc')->get();
         return view("admin.projects.index", compact("projects"));
     }
 
@@ -25,35 +26,40 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $types= Type::all();
+        $types = Type::all();
+        $techs = Technology::all();
 
-        return view("admin.projects.create", compact("types"));
+        return view("admin.projects.create", compact("types", "techs"));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $data = $request->all();
+    {
+        $data = $request->all();
 
-    $newProject = new Project();
+        $newProject = new Project();
 
-    $newProject->title = $data["title"];
-    $newProject->description = $data["description"];
-    $newProject->link_github = $data["link_github"];
-    $newProject->type_id = $data["type_id"];
-    $newProject->slug = Str::slug($data["title"]);
+        $newProject->title = $data["title"];
+        $newProject->description = $data["description"];
+        $newProject->link_github = $data["link_github"];
+        $newProject->type_id = $data["type_id"];
+        $newProject->slug = Str::slug($data["title"]);
 
-    if (array_key_exists("img_url", $data)) {
-        $img_url = Storage::putFile("projects/images", $data["img_url"]);
-        $newProject->img_url = $img_url;
+        if (array_key_exists("img_url", $data)) {
+            $img_url = Storage::putFile("projects/images", $data["img_url"]);
+            $newProject->img_url = $img_url;
+        }
+
+        $newProject->save();
+
+        if ($request->has("techs")) {
+            $newProject->technologies()->attach($data["techs"]);
+        }
+
+        return redirect()->route('admin.projects.index');
     }
-
-    $newProject->save();
-
-    return redirect()->route('projects.index');
-}
 
     /**
      * Display the specified resource.
@@ -68,47 +74,52 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $types=Type::all();
-        return view('admin.projects.edit', compact('project',"types"));
+        $types = Type::all();
+        $techs = Technology::all();
+        return view('admin.projects.edit', compact('project', "types", "techs"));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Project $project)
-{
-    $data = $request->all();
+    {
+        $data = $request->all();
 
-    $project->title = $data["title"];
-    $project->description = $data["description"];
-    $project->link_github = $data["link_github"];
-    $project->type_id = $data["type_id"];
-    
-    $project->slug = Str::slug($data["title"]);
+        $project->title = $data["title"];
+        $project->description = $data["description"];
+        $project->link_github = $data["link_github"];
+        $project->type_id = $data["type_id"];
 
-    if (array_key_exists("img_url", $data)) {
-        if ($project->img_url) {
-            Storage::delete($project->img_url);
+        $project->slug = Str::slug($data["title"]);
+
+        if (array_key_exists("img_url", $data)) {
+            if ($project->img_url) {
+                Storage::delete($project->img_url);
+            }
+            $img_url = Storage::putFile("projects/images", $data["img_url"]);
+            $project->img_url = $img_url;
         }
-        $img_url = Storage::putFile("projects/images", $data["img_url"]);
-        $project->img_url = $img_url;
+
+        $project->update();
+        $project->technologies()->sync($request->input("techs",[]));
+
+        return redirect()->route('admin.projects.show', $project);
     }
-
-    $project->save();
-
-    return redirect()->route('projects.show', $project);
-}
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Project $project)
     {
+
+        $project->technologies()->detach();
+
         if ($project->img_url) {
-        Storage::delete($project->img_url);
-    }
+            Storage::delete($project->img_url);
+        }
         $project->delete();
 
-        return redirect()->route("projects.index");
+        return redirect()->route("admin.projects.index");
     }
 }

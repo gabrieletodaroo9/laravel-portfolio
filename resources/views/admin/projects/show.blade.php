@@ -4,7 +4,7 @@
     <div class="container py-5">
 
         <div class="mb-4">
-            <a href="{{ route('projects.index') }}" class="btn btn-outline-secondary btn-sm">
+            <a href="{{ route('admin.projects.index') }}" class="btn btn-outline-secondary btn-sm">
                 <i class="fa-solid fa-arrow-left"></i> Torna alla lista
             </a>
         </div>
@@ -22,6 +22,23 @@
                 </div>
             </div>
             <div class="card-body p-5">
+
+                <div class="mb-5 text-center">
+                    <h6 class="fw-bold mb-3 text-uppercase text-muted small">Tecnologie utilizzate:</h6>
+                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                        @forelse ($project->technologies as $tech)
+                            <div class=" d-flex align-items-center px-3">
+                                @if ($tech->img_url)
+                                    <img src="{{ asset($tech->img_url) }}" alt="{{ $tech->name }}"
+                                        style="height: 25px; width: auto;" class="me-1">
+                                @endif
+                            </div>
+                        @empty
+                            <span class="text-muted font-italic">Nessuna tecnologia specificata per questo progetto.</span>
+                        @endforelse
+                    </div>
+                </div>
+
                 @if ($project->img_url)
                     <div class="project-img w-50 mx-auto mb-4">
                         <img src="{{ asset('storage/' . $project->img_url) }}" class="img-fluid rounded shadow-sm">
@@ -48,7 +65,7 @@
             </div>
 
             <div class="card-footer bg-light p-3 d-flex justify-content-center gap-3">
-                <a href="{{ route('projects.edit', $project) }}" class="btn btn-outline-warning px-4">Modifica Progetto</a>
+                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-outline-warning px-4">Modifica Progetto</a>
                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">Elimina progetto</button>
             </div>
@@ -66,7 +83,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
 
-                            <form action="{{ route('projects.destroy', $project) }}" method="POST">
+                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Elimina definitivamente</button>

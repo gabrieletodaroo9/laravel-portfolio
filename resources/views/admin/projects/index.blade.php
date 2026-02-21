@@ -3,11 +3,10 @@
 @section('content')
     <div class="container py-5">
         <div class="mb-5">
-            <h1 class="text-center display-4">I Miei Progetti</h1>
-            <p class="text-center text-muted">Gestione del portfolio database</p>
+            <h1 class="text-center display-4 text-uppercase">I Miei Progetti</h1>
         </div>
 
-        <a href="{{ route('projects.create') }}" class="btn btn-outline-success btn-sm mb-5">Aggiungi nuovo progetto</a>
+        <a href="{{ route('admin.projects.create') }}" class="btn btn-outline-success btn-sm mb-5">Aggiungi nuovo progetto</a>
 
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
@@ -31,11 +30,11 @@
                             <hr>
 
                             <div class="mt-auto d-flex justify-content-around align-items-center">
-                                <a href="{{ route('projects.show', $project) }}" class="btn btn-sm btn-outline-dark"
+                                <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-sm btn-outline-dark"
                                     title="Vedi">
                                     <i class="bi-eye me-2"></i>Visualizza
                                 </a>
-                                <a href="{{ route('projects.edit', $project) }}" class="btn btn-sm btn-outline-warning"
+                                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-sm btn-outline-warning"
                                     title="Modifica">
                                     <i class=" bi-pen me-2"></i>Modifica
                                 </a>
@@ -64,7 +63,7 @@
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Annulla</button>
 
-                                                <form action="{{ route('projects.destroy', $project) }}" method="POST">
+                                                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Elimina

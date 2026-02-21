@@ -9,7 +9,7 @@
              </li>
              <li class="mb-2"><a href={{ route('admin.profile') }} class="text-decoration-none text-dark">Gestisci
                      profilo</a></li>
-             <li class="mb-2"><a href={{ route('projects.index') }} class="text-decoration-none text-dark">Gestisci
+             <li class="mb-2"><a href={{ route('admin.projects.index') }} class="text-decoration-none text-dark">Gestisci
                      progetti</a></li>
          </ul>
      </div>

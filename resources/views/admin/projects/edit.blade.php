@@ -3,7 +3,7 @@
 @section('content')
     <div class="container py-5">
         <div class="mb-4">
-            <a href="{{ route('projects.index') }}" class="btn btn-outline-secondary btn-sm">
+            <a href="{{ route('admin.projects.index') }}" class="btn btn-outline-secondary btn-sm">
                 <i class="fa-solid fa-arrow-left"></i> Torna alla lista
             </a>
         </div>
@@ -14,7 +14,7 @@
             </div>
 
             <div class="card-body p-5 py-3">
-                <form action="{{ route('projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="type_id" class="form-label fw-bold">Categoria</label>
+                        <label for="type_id" class="form-label fw-bold">Tipologia progetto</label>
                         <select id="type_id" name="type_id" class="form-control">
                             @foreach ($types as $type)
                                 <option value="{{ $type->id }}" {{ $project->type_id == $type->id ? 'selected' : '' }}>
@@ -44,6 +44,16 @@
                                 </option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <h6 class="fw-bold">Tecnologie utilizzate:</h6>
+                    <div class="form-control mb-4 d-flex flex-wrap gap-4 border-0">
+                        @foreach ($techs as $tech)
+                            <div>
+                                <input type="checkbox" name="techs[]" value="{{ $tech->id }}" id="tag-{{ $tech->id }}" {{ $project->technologies->contains($tech->id) ? "checked" : " " }}>
+                                <label for="tag-{{ $tech->id }}">{{ $tech->name }}</label>
+                            </div>
+                        @endforeach
                     </div>
 
                     @if ($project->img_url)
