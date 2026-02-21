@@ -7,10 +7,13 @@
         <p class="text-center text-muted">Gestione del portfolio database</p>
     </div>
 
+    <a href="{{ route('projects.create') }}" class="btn btn-outline-success btn-sm mb-5">Aggiungi nuovo progetto</a>
+
+
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
         @foreach($projects as $project)
         <div class="col">
-            <a href="{{route('projects.show')}}" class="text-decoration-none h-100">
+            <a href="{{route('projects.show', $project )}}" class="text-decoration-none h-100">
                 <div class="card h-100 shadow-sm border-0">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold text-dark">{{ $project->title }}</h5>

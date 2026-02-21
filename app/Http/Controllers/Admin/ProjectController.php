@@ -13,8 +13,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects= Project::all();
-        return view("admin.projects.index",compact("projects"));
+        $projects = Project::all();
+        return view("admin.projects.index", compact("projects"));
     }
 
     /**
@@ -22,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.projects.create");
     }
 
     /**
@@ -30,15 +30,23 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newProject = new Project();
+
+        $newProject->title = $request->title;
+        $newProject->description = $request->description;
+        $newProject->link_github = $request->link_github;
+
+        $newProject->save();
+
+        return redirect()->route('projects.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+        return view("admin.projects.show", compact("project"));
     }
 
     /**

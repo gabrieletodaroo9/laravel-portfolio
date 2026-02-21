@@ -14,7 +14,10 @@
         <div class="row g-0 flex-grow-1">
             <div class="col-2 bg-light shadow-sm border-end">
                 <div class="sticky-top">
-                    <h4 class="p-5 pb-0">Menu</h4>
+                    <div class="p-5 d-flex justify-content-start align-items-center">
+                        <img class="" style="height:60px;" src="{{ asset('logo-gt.png') }}" alt="Logo">
+                    </div>
+                    <h4 class="px-5 pb-0 fw-bold">Menu</h4>
                     <ul class="p-5 pt-2 list-unstyled">
                         <li class="mb-2"><a href="{{route('admin.dashboard')}}" class="text-decoration-none text-dark">Home</a></li>
                         <li class="mb-2"><a href={{route('admin.profile')}} class="text-decoration-none text-dark">Gestisci profilo</a></li>

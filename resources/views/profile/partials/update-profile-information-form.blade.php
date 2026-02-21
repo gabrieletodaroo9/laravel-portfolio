@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-secondary">
+        <h2 class="text-dark">
             {{ __('Profile Information') }}
         </h2>
 
@@ -60,7 +60,7 @@
         </div>
 
         <div class="d-flex align-items-center gap-4">
-            <button class="btn btn-primary" type="submit">{{ __('Save') }}</button>
+            <button class="btn btn-outline-success" type="submit">{{ __('Save') }}</button>
 
             @if (session('status') === 'profile-updated')
             <script>
