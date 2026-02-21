@@ -11,19 +11,24 @@
 
         <div class="card shadow-sm border mt-5 overflow-hidden">
 
-            <div class="card-header py-4 text-center">
-                <h1 class="text-secondary mb-0">{{ $project->title }}</h1>
-            </div>
+            <div class="card-header py-4">
+                <div class="d-flex justify-content-between align-items-center gap-3">
+                    <h3 class="text-secondary text-uppercase text-dark ms-2 mb-0">{{ $project->title }}</h3>
 
+                    <span class="badge rounded-pill text-uppercase px-3 py-2 text-white"
+                        style="background-color: {{ $project->type->color }};">
+                        <strong>{{ $project->type->name }}</strong> project
+                    </span>
+                </div>
+            </div>
             <div class="card-body p-5">
                 <div class="row">
                     <div class="col-md-8 d-flex flex-column justify-content-center align-items-center w-100">
                         <h5 class="text-uppercase text-muted small fw-bold mb-3">Descrizione del Progetto</h5>
-                        <p class="lead text-secondary mb-5">
+                        <p class="lead text-secondary mb-5 pb-4">
                             {{ $project->description }}
                         </p>
 
-                        <hr class="my-4">
 
                         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
                             <div class="text-center">
@@ -55,13 +60,13 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                           
+
                             <form action="{{ route('projects.destroy', $project) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Elimina definitivamente</button>
                             </form>
-                        
+
                         </div>
                     </div>
                 </div>
