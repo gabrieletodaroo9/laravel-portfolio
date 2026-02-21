@@ -14,7 +14,7 @@
             </div>
 
             <div class="card-body p-5 py-3">
-                <form action="{{ route('projects.store') }}" method="POST">
+                <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-4">
@@ -40,6 +40,11 @@
                                 <option value="{{ $type->id }}">{{ $type->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="img_url">Immagine</label>
+                        <input type="file" id="img_url" name="img_url" class="form-control">
                     </div>
 
                     <div class="text-center mt-3">

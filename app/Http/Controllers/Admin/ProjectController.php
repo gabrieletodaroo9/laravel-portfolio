@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -32,18 +34,26 @@ class ProjectController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $newProject = new Project();
+{
+    $data = $request->all();
 
-        $newProject->title = $request->title;
-        $newProject->description = $request->description;
-        $newProject->link_github = $request->link_github;
-        $newProject->type_id = $request->type_id;
+    $newProject = new Project();
 
-        $newProject->save();
+    $newProject->title = $data["title"];
+    $newProject->description = $data["description"];
+    $newProject->link_github = $data["link_github"];
+    $newProject->type_id = $data["type_id"];
+    $newProject->slug = Str::slug($data["title"]);
 
-        return redirect()->route('projects.index');
+    if (array_key_exists("img_url", $data)) {
+        $img_url = Storage::putFile("projects/images", $data["img_url"]);
+        $newProject->img_url = $img_url;
     }
+
+    $newProject->save();
+
+    return redirect()->route('projects.index');
+}
 
     /**
      * Display the specified resource.
@@ -66,23 +76,37 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Project $project)
-    {
-        $project->title = $request->title;
-        $project->description = $request->description;
-        $project->link_github = $request->link_github;
-        $project->type_id = $request->type_id;
+{
+    $data = $request->all();
 
+    $project->title = $data["title"];
+    $project->description = $data["description"];
+    $project->link_github = $data["link_github"];
+    $project->type_id = $data["type_id"];
+    
+    $project->slug = Str::slug($data["title"]);
 
-        $project->save();
-
-        return redirect()->route('projects.show',$project);
+    if (array_key_exists("img_url", $data)) {
+        if ($project->img_url) {
+            Storage::delete($project->img_url);
+        }
+        $img_url = Storage::putFile("projects/images", $data["img_url"]);
+        $project->img_url = $img_url;
     }
+
+    $project->save();
+
+    return redirect()->route('projects.show', $project);
+}
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Project $project)
     {
+        if ($project->img_url) {
+        Storage::delete($project->img_url);
+    }
         $project->delete();
 
         return redirect()->route("projects.index");

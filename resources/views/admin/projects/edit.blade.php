@@ -14,7 +14,7 @@
             </div>
 
             <div class="card-body p-5 py-3">
-                <form action="{{ route('projects.update', $project->id) }}" method="POST">
+                <form action="{{ route('projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -44,6 +44,18 @@
                                 </option>
                             @endforeach
                         </select>
+                    </div>
+
+                    @if ($project->img_url)
+                        <div>
+                            <img src="{{ asset('storage/' . $project->img_url) }}" style="width: 150px; height: auto;"
+                                class="mb-3">
+                        </div>
+                    @endif
+
+                    <div class="mb-3">
+                        <label for="img_url">Immagine</label>
+                        <input type="file" id="img_url" name="img_url" class="form-control">
                     </div>
 
                     <div class="text-center mt-3">

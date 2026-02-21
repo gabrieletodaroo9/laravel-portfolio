@@ -22,6 +22,11 @@
                 </div>
             </div>
             <div class="card-body p-5">
+                @if ($project->img_url)
+                    <div class="project-img w-50 mx-auto mb-4">
+                        <img src="{{ asset('storage/' . $project->img_url) }}" class="img-fluid rounded shadow-sm">
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-md-8 d-flex flex-column justify-content-center align-items-center w-100">
                         <h5 class="text-uppercase text-muted small fw-bold mb-3">Descrizione del Progetto</h5>

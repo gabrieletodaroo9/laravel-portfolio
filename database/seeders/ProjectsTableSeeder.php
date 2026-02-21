@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Project;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class ProjectsTableSeeder extends Seeder
 {
@@ -36,10 +37,12 @@ class ProjectsTableSeeder extends Seeder
             $newproject= new Project();
 
             $newproject->title = $project["title"];
+            $newproject->slug = Str::slug($project['title']);
             $newproject->description = $project["description"];
             $newproject->link_github = $project["link_github"];
+            $newproject->img_url = $project["img_url"]??null;
 
-            $newproject->saveOrFail();
+            $newproject->save();
         }
 
     }

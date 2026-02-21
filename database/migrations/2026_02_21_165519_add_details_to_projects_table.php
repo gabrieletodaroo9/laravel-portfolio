@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            //
+            $table->string("slug")->unique();
+            $table->text("img_url")->nullable();
         });
     }
 
