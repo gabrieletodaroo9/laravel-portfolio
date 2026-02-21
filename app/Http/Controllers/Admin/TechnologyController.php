@@ -3,63 +3,84 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $techs = Technology::all();
+        return view("admin.technologies.index", compact("techs"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view("admin.technologies.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newTech = new Technology();
+        $newTech->name = $data["name"];
+        $newTech->color = $data["color"];
+        $newTech->description = $data["description"] ?? null;
+        $newTech->slug = Str::slug($data["name"]);
+
+        if (array_key_exists("img_url", $data)) {
+            $img_url = Storage::putFile("technologies/images", $data["img_url"]);
+            $newTech->img_url = $img_url;
+        }
+
+        $newTech->save();
+
+        return redirect()->route('admin.technologies.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Technology $technology)
     {
-        //
+        return view("admin.technologies.show", compact("technology"));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Technology $technology)
     {
-        //
+        return view('admin.technologies.edit', compact('technology'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Technology $technology)
     {
-        //
+        $data = $request->all();
+
+        $technology->name = $data["name"];
+        $technology->color = $data["color"];
+        $technology->description = $data["description"] ?? null;
+        $technology->slug = Str::slug($data["name"]);
+
+        if (array_key_exists("img_url", $data)) {
+            if ($technology->img_url) {
+                Storage::delete($technology->img_url);
+            }
+            $img_url = Storage::putFile("technologies/images", $data["img_url"]);
+            $technology->img_url = $img_url;
+        }
+
+        $technology->update();
+
+        return redirect()->route('admin.technologies.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Technology $technology)
     {
-        //
+        if ($technology->img_url) {
+            Storage::delete($technology->img_url);
+        }
+        
+        $technology->delete();
+
+        return redirect()->route("admin.technologies.index");
     }
 }
