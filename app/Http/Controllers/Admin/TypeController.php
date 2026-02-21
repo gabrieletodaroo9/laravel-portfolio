@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -12,7 +14,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::orderBy('created_at', 'desc')->get();
+        return view("admin.types.index", compact("types"));
     }
 
     /**
@@ -20,7 +23,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.types.create");
     }
 
     /**
@@ -28,38 +31,57 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newType = new Type();
+        $newType->name = $data["name"];
+        $newType->color = $data["color"];
+        $newType->slug = Str::slug($data["name"]);
+
+        $newType->save();
+
+        return redirect()->route('admin.types.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Type $type)
     {
-        //
+        return view("admin.types.show", compact("type"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Type $type)
     {
-        //
+        $data = $request->all();
+
+        $type->name = $data["name"];
+        $type->color = $data["color"];
+        $type->slug = Str::slug($data["name"]);
+
+        $type->update();
+
+        return redirect()->route('admin.types.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return redirect()->route("admin.types.index");
     }
 }

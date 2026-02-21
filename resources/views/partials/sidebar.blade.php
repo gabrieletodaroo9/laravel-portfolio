@@ -11,6 +11,8 @@
                      profilo</a></li>
              <li class="mb-2"><a href={{ route('admin.projects.index') }} class="text-decoration-none text-dark">Gestisci
                      progetti</a></li>
+              <li class="mb-2"><a href={{ route('admin.types.index') }} class="text-decoration-none text-dark">Gestisci
+                     tipologie progetti</a></li>        
          </ul>
      </div>
  </div>
