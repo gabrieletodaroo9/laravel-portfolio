@@ -2,42 +2,53 @@
 
 namespace Database\Seeders;
 
-use App\Models\Type;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class TypesTableSeeder extends Seeder
 {
+
     /**
-     * Run the database seeds.
+     * Auto generated seed file
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        $types = [
-            [
+        
+
+        DB::table('types')->delete();
+        
+        DB::table('types')->insert(array (
+            0 => 
+            array (
+                'id' => 1,
                 'name' => 'Front-end',
+                'slug' => 'front-end',
                 'color' => '#3498db',
-            ],
-            [
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:16:43',
+            ),
+            1 => 
+            array (
+                'id' => 2,
                 'name' => 'Back-end',
+                'slug' => 'back-end',
                 'color' => '#2ecc71',
-            ],
-            [
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:16:43',
+            ),
+            2 => 
+            array (
+                'id' => 3,
                 'name' => 'Full-stack',
+                'slug' => 'full-stack',
                 'color' => '#9b59b6',
-            ]
-        ];
-
-        foreach ($types as $type) {
-            
-            $newType = new Type();
-
-            $newType->name = $type['name'];
-            $newType->slug = Str::slug($type['name']);
-            $newType->color = $type['color'];
-
-            $newType->save();
-        }
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:16:43',
+            ),
+        ));
+        
+        
     }
 }

@@ -2,85 +2,126 @@
 
 namespace Database\Seeders;
 
-use App\Models\Technology;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class TechnologiesTableSeeder extends Seeder
 {
+
     /**
-     * Run the database seeds.
+     * Auto generated seed file
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        $technologies = [
-            [
+        
+
+        DB::table('technologies')->delete();
+        
+        DB::table('technologies')->insert(array (
+            0 => 
+            array (
+                'id' => 1,
                 'name' => 'HTML5',
-                'color' => '#E34F26',
+                'slug' => 'html5',
+                'color' => '#e34f26',
                 'description' => 'Linguaggio di markup per la struttura delle pagine web.',
-                'img_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1280px-HTML5_logo_and_wordmark.svg.png',
-            ],
-            [
+                'img_url' => 'technologies/images/2G3bgC1IK9r8s38y09iRHfLWHUew2I9p272yGqq3.png',
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:38:29',
+            ),
+            1 => 
+            array (
+                'id' => 2,
                 'name' => 'CSS3',
-                'color' => '#1572B6',
+                'slug' => 'css3',
+                'color' => '#1572b6',
                 'description' => 'Linguaggio usato per definire la formattazione di documenti HTML.',
-                'img_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/500px-CSS3_logo_and_wordmark.svg.png',
-            ],
-            [
+                'img_url' => 'technologies/images/rvuvXB0TT6R0jXqIz5VcHaQJmm7nucjTz4xinq8N.png',
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:38:36',
+            ),
+            2 => 
+            array (
+                'id' => 3,
                 'name' => 'JavaScript',
-                'color' => '#F7DF1E',
+                'slug' => 'javascript',
+                'color' => '#f7df1e',
                 'description' => 'Linguaggio di scripting per l\'interattività.',
-                'img_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/960px-Unofficial_JavaScript_logo_2.svg.png',
-            ],
-            [
+                'img_url' => 'technologies/images/iNstT4oR3UW3OmrDsuEd6u396JIMqfgDtCykEM9c.png',
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:38:44',
+            ),
+            3 => 
+            array (
+                'id' => 4,
                 'name' => 'PHP',
-                'color' => '#777BB4',
+                'slug' => 'php',
+                'color' => '#777bb4',
                 'description' => 'Linguaggio di scripting lato server ampiamente utilizzato.',
-                'img_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/3840px-PHP-logo.svg.png',
-            ],
-            [
+                'img_url' => 'technologies/images/Vq8SenHiz45JoFYSjEPVx2iSP21z4b9VwvV5KXhj.png',
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:38:51',
+            ),
+            4 => 
+            array (
+                'id' => 5,
                 'name' => 'Laravel',
-                'color' => '#FF2D20',
+                'slug' => 'laravel',
+                'color' => '#ff2d20',
                 'description' => 'Framework PHP per applicazioni web eleganti.',
-                'img_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/3840px-Laravel.svg.png',
-            ],
-            [
+                'img_url' => 'technologies/images/GpYK2jW6H0VIVR9SUwXCqEGmin4wJ9WvFzhgT9Kl.png',
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:38:58',
+            ),
+            5 => 
+            array (
+                'id' => 6,
                 'name' => 'React',
-                'color' => '#61DAFB',
+                'slug' => 'react',
+                'color' => '#61dafb',
                 'description' => 'Libreria JavaScript per la creazione di interfacce utente.',
-                'img_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/3840px-React-icon.svg.png',
-            ],
-            [
+                'img_url' => 'technologies/images/FZbU2rKmrzYrTNndRh7500IdtJXsa9psjUUC7PL6.png',
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:39:05',
+            ),
+            6 => 
+            array (
+                'id' => 7,
                 'name' => 'Express',
+                'slug' => 'express',
                 'color' => '#000000',
                 'description' => 'Framework web minimale e flessibile per Node.js.',
-                'img_url' => 'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/express-js-icon.png',
-            ],
-            [
+                'img_url' => 'technologies/images/sjY2WtinYEoTpFeeqwc5aqeBe3Gj70WQ2mO927WU.webp',
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:39:12',
+            ),
+            7 => 
+            array (
+                'id' => 8,
                 'name' => 'Bootstrap',
-                'color' => '#7952B3',
+                'slug' => 'bootstrap',
+                'color' => '#7952b3',
                 'description' => 'Il framework CSS più popolare al mondo.',
-                'img_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png',
-            ],
-            [
+                'img_url' => 'technologies/images/ix7QUyZX7UUIcyHZZmtjwq8pzmw5o1xvtVvgw9m0.png',
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:39:20',
+            ),
+            8 => 
+            array (
+                'id' => 9,
                 'name' => 'MySQL',
-                'color' => '#4479A1',
+                'slug' => 'mysql',
+                'color' => '#4479a1',
                 'description' => 'Sistema di gestione di database relazionali.',
-                'img_url' => 'https://images.icon-icons.com/1381/PNG/512/mysqlworkbench_93532.png',
-            ],
-        ];
-
-        foreach ($technologies as $tech) {
-            $newTech = new Technology();
-            
-            $newTech->name = $tech['name'];
-            $newTech->slug = Str::slug($tech['name']);
-            $newTech->color = $tech['color'];
-            $newTech->description = $tech['description'];
-            $newTech->img_url = $tech['img_url'];
-
-            $newTech->save();
-        }
+                'img_url' => 'technologies/images/mH4Q2GMqYVfxm859MRd5x3WeXa516ghyQqJRwBjM.webp',
+                'created_at' => '2026-02-22 00:16:43',
+                'updated_at' => '2026-02-22 00:39:26',
+            ),
+        ));
+        
+        
     }
 }
