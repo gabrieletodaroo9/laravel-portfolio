@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Technology extends Model
 {
 
-    public function projects() {
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'pivot',
+    ];
+
+    public function projects()
+    {
         return $this->belongsToMany(Project::class);
     }
 }

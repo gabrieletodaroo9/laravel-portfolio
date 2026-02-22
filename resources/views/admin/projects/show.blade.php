@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-md-8 d-flex flex-column justify-content-center align-items-center w-100">
                         <h5 class="text-uppercase text-muted small fw-bold mb-3">Descrizione del Progetto</h5>
-                        <p class="lead text-secondary mb-5 pb-4">
+                        <p class="lead text-secondary mb-5 pb-4 text-center">
                             {{ $project->description }}
                         </p>
 
