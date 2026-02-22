@@ -3,7 +3,7 @@
 @section('content')
     <div class="container py-5">
 
-        <h1 class="text-center display-4 text-uppercase mb-5">Tecnologie</h1>
+        <h1 class="text-center display-4 text-uppercase mb-5">Tecnologie progetti</h1>
         <a href="{{ route('admin.technologies.create') }}" class="btn btn-outline-success btn-sm mb-5">
             Aggiungi Tecnologia
         </a>

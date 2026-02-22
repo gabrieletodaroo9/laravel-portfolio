@@ -29,7 +29,7 @@
                         @forelse ($project->technologies as $tech)
                             <div class=" d-flex align-items-center px-3">
                                 @if ($tech->img_url)
-                                    <img src="{{ asset($tech->img_url) }}" alt="{{ $tech->name }}"
+                                    <img src="{{ asset('storage/' . $tech->img_url) }}" alt="{{ $tech->name }}"
                                         style="height: 25px; width: auto;" class="me-1">
                                 @endif
                             </div>

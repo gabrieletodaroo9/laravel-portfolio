@@ -3,7 +3,7 @@
 @section('content')
     <div class="container py-5">
         <div class="mb-5">
-            <h1 class="text-center display-4 text-uppercase">Categorie Progetti</h1>
+            <h1 class="text-center display-4 text-uppercase">Tipologie progetti</h1>
         </div>
 
         <a href="{{ route('admin.types.create') }}" class="btn btn-outline-success btn-sm mb-5">Aggiungi nuovo tipo</a>
