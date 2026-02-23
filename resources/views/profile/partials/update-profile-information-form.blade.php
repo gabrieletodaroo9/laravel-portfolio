@@ -122,7 +122,7 @@
                             el.style.display = 'block';
                         }
                     </script>
-                    <p id='profile-status' class="fs-6 text-muted">{{ __('Saved.') }}</p>
+                    <p id='profile-status' class="fs-6 text-muted mt-4 pt-2">{{ __('Salvato.') }}</p>
                 @endif
             </div>
         </form>
