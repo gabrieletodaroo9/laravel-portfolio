@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TypeController;
@@ -24,6 +25,9 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', ProjectController::class);
         Route::resource('types', TypeController::class);
         Route::resource('technologies', TechnologyController::class);
+        Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+        Route::get('/messages/{id}', [MessageController::class, 'show'])->name('messages.show');
+        Route::delete('/messages/{id}', [MessageController::class, 'destroy'])->name('messages.destroy');
     });
 
 require __DIR__ . '/auth.php';

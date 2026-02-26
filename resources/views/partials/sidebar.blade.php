@@ -13,6 +13,7 @@
             <li class="mb-2"><a href="{{ route('admin.projects.index') }}" class="text-decoration-none text-dark">Gestisci progetti</a></li>
             <li class="mb-2"><a href="{{ route('admin.types.index') }}" class="text-decoration-none text-dark">Gestisci tipologie</a></li>
             <li class="mb-2"><a href="{{ route('admin.technologies.index') }}" class="text-decoration-none text-dark">Gestisci tecnologie</a></li>
+            <li class="mb-2"><a href="{{ route('admin.messages.index') }}" class="text-decoration-none text-dark">Visualizza messaggi</a></li>         
         </ul>
 
         <div class="mt-auto ps-5 pb-5">

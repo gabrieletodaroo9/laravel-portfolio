@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
@@ -15,9 +16,9 @@ class DashboardController extends Controller
     $projects_count = Project::count();
     $types_count = Type::count();
     $techs_count = Technology::count();
-    $latest_projects = Project::latest()->take(5)->get();
+    $messages_count = Message::count();
 
-    return view('admin.dashboard', compact('projects_count', 'types_count', 'techs_count', 'latest_projects'));
+    return view('admin.dashboard', compact('projects_count', 'types_count', 'techs_count','messages_count'));
 }
 
     public function profile(){
