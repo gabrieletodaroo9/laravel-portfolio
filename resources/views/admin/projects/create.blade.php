@@ -1,7 +1,7 @@
 @extends('admin.adminLayouts.dashboardLayout')
 
 @section('content')
-    <div class="container py-5">
+    <div class="container-fluid container-md py-5">
         <div class="mb-4">
             <a href="{{ route('admin.projects.index') }}" class="btn btn-outline-secondary btn-sm">
                 <i class="fa-solid fa-arrow-left"></i> Torna alla lista
@@ -13,7 +13,7 @@
                 <h2 class="text-secondary mb-0">Nuovo Progetto</h2>
             </div>
 
-            <div class="card-body p-5 py-3">
+            <div class="card-body p-md-5 py-3">
                 <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-success px-5">Salva Progetto</button>
+                        <button type="submit" class="btn btn-success px-5 small">Salva Progetto</button>
                     </div>
                 </form>
             </div>

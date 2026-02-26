@@ -1,13 +1,9 @@
 <section>
     <div class="container">
         <header>
-            <h2 class="text-dark">
+            <h2 class="text-dark fs-5 text-uppercase py-2">
                 {{ __('Informazioni') }}
             </h2>
-
-            <p class="mt-1 text-muted">
-                {{ __('Aggiorna qui i dati relativi al tuo profilo! ') }}
-            </p>
         </header>
 
         <form id="send-verification" method="post"  action="{{ route('verification.send') }}">
@@ -98,20 +94,20 @@
 
             <div class="row mb-2">
                 <div class="col-md-6">
-                    <label for="github_link" class="mb-1"><i class="bi bi-github mx-2"></i> {{ __('GitHub Link') }}</label>
+                    <label for="github_link" class="mb-1 my-2"><i class="bi bi-github mx-2"></i> {{ __('GitHub Link') }}</label>
                     <input id="github_link" name="github_link" type="text" class="form-control form-control-sm"
                         value="{{ old('github_link', $user->github_link) }}" />
                 </div>
                 <div class="col-md-6">
-                    <label for="linkedin_link" class="mb-1"><i class="bi bi-linkedin mx-2"></i>{{ __('LinkedIn Link') }}</label>
+                    <label for="linkedin_link" class="mb-1 my-2"><i class="bi bi-linkedin mx-2"></i>{{ __('LinkedIn Link') }}</label>
                     <input id="linkedin_link" name="linkedin_link" type="text" class="form-control form-control-sm"
                         value="{{ old('linkedin_link', $user->linkedin_link) }}" />
                 </div>
             </div>
 
 
-            <div class="d-flex align-items-center gap-4">
-                <button class="btn btn-sm btn-outline-success mt-3" type="submit">{{ __('Salva') }}</button>
+            <div class="d-flex justify-content-center justify-content-md-start align-items-center">
+                <button class="btn btn-sm btn-outline-success mt-3 px-5 px-md-1" type="submit">{{ __('Salva') }}</button>
 
                 @if (session('status') === 'profile-updated')
                     <script>
@@ -126,7 +122,7 @@
                 @endif
             </div>
         </form>
-        <hr class="my-5">
+        <hr class="my-4 my-md-5">
     </div>
 
 </section>

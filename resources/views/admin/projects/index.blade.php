@@ -1,17 +1,17 @@
 @extends('admin.adminLayouts.dashboardLayout')
 
 @section('content')
-    <div class="container py-5">
-        <div class="mb-5">
+    <div class="container py-4 py-md-5">
+        <div class="mb-4 mb-md-5">
             <h1 class="text-center display-4 text-uppercase">I Miei Progetti</h1>
         </div>
-
-        <a href="{{ route('admin.projects.create') }}" class="btn btn-outline-success btn-sm mb-5">Aggiungi nuovo progetto</a>
-
+<div class="d-flex justify-content-center align-items-center">
+    <a href="{{ route('admin.projects.create') }}" class="btn btn-outline-success btn-sm mb-2 mb-md-5">Aggiungi nuovo progetto</a>
+</div>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
             @foreach ($projects as $project)
-                <div class="col">
+                <div class="col pt-3 pt-md-0">
                     <div class="card h-100 shadow-sm border-0">
                         <div class="card-body d-flex flex-column">
 

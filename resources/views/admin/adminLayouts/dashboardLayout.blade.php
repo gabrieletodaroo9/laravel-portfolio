@@ -9,15 +9,25 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <main class="flex-grow-1 d-flex flex-column">
-        <div class="row g-0 flex-grow-1">
-            @include('partials.sidebar')
-            <div class="col-10">
-                @yield('content')
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none shadow-sm">
+        <div class="container-fluid">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-grow-1 d-flex">
+        <div class="container-fluid">
+            <div class="row">
+                @include('partials.sidebar')
+
+                <div class="col-12 col-lg-10 p-0">
+                    @yield('content')
+                </div>
             </div>
+        </div>
     </main>
-
-
 </body>
 
 </html>

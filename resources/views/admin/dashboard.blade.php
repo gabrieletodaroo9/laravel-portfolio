@@ -1,13 +1,13 @@
 @extends("admin.adminLayouts.dashboardLayout")
 
 @section("content")
-<div class="container py-5">
-    <div class="mb-5">
-        <h1 class="text-center display-4 text-uppercase mb-5">Dashboard</h1>
+<div class="container pt-5 py-md-5">
+    <div>
+        <h1 class="text-center display-4 text-uppercase  mb-lg-5">Dashboard</h1>
     </div>
 
-    <div class="row g-5 mb-5">
-        <div class="col-md-3 pt-5">
+    <div class="row g-lg-5 mb-5">
+        <div class="col-6 col-md-3 pt-5">
             <div class="card shadow border-0 h-100">
                 <div class="card-body d-flex align-items-center">
                     <div class="p-1">
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 pt-5">
+        <div class="col-6 col-md-3 pt-5">
             <div class="card shadow border-0 h-100">
                 <div class="card-body d-flex align-items-center">
                     <div class="p-1">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 pt-5">
+        <div class="col-6 col-md-3 pt-3 pt-md-5">
             <div class="card shadow border-0 h-100">
                 <div class="card-body d-flex align-items-center">
                     <div class="p-1">
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 pt-5">
+        <div class="col-6 col-md-3 pt-3 pt-md-5">
             <div class="card shadow border-0 h-100">
                 <div class="card-body d-flex align-items-center">
                     <div class="p-1">
@@ -49,10 +49,10 @@
         </div>
     </div>
 
-    <hr class="my-5">
+    <hr class="my-3 my-md-5">
 
     <h4 class="display-6 text-uppercase mt-5">Azioni Rapide</h4>
-    <div class="d-flex justify-content-start align-items-center gap-5 mt-5 flex-wrap">
+    <div class="d-flex justify-content-start align-items-center gap-2 gap-lg-4 mt-3 mt-md-5 flex-wrap mb-4">
         <div>
             <a href="{{ route('admin.projects.index') }}" class="btn w-auto py-3 shadow border-0">
                 Lista Progetti

@@ -1,15 +1,15 @@
 @extends('admin.adminLayouts.dashboardLayout')
 
 @section('content')
-    <div class="container py-5">
+    <div class="container-fluid container-md py-md-4">
 
-        <div class="mb-4">
+        <div class="my-4 my-md-0">
             <a href="{{ route('admin.projects.index') }}" class="btn btn-outline-secondary btn-sm">
                 <i class="fa-solid fa-arrow-left"></i> Torna alla lista
             </a>
         </div>
 
-        <div class="card shadow-sm border mt-5 overflow-hidden">
+        <div class="card shadow-sm border mt-3 mt-md-4 overflow-hidden">
 
             <div class="card-header py-4">
                 <div class="d-flex justify-content-between align-items-center gap-3">
@@ -21,13 +21,13 @@
                     </span>
                 </div>
             </div>
-            <div class="card-body p-5">
+            <div class="card-body p-md-5">
 
                 <div class="mb-5 text-center">
                     <h6 class="fw-bold mb-3 text-uppercase text-muted small">Tecnologie utilizzate:</h6>
-                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                    <div class="d-flex justify-content-center flex-wrap gap-2 gap-md-3">
                         @forelse ($project->technologies as $tech)
-                            <div class=" d-flex align-items-center px-3">
+                            <div class=" d-flex align-items-center px-1 px-md-3">
                                 @if ($tech->img_url)
                                     <img src="{{ asset('storage/' . $tech->img_url) }}" alt="{{ $tech->name }}"
                                         style="height: 25px; width: auto;" class="me-1">
@@ -40,14 +40,14 @@
                 </div>
 
                 @if ($project->img_url)
-                    <div class="project-img w-50 mx-auto mb-4">
+                    <div class="project-img mx-auto mb-4">
                         <img src="{{ asset('storage/' . $project->img_url) }}" class="img-fluid rounded shadow-sm">
                     </div>
                 @endif
                 <div class="row">
                     <div class="col-md-8 d-flex flex-column justify-content-center align-items-center w-100">
                         <h5 class="text-uppercase text-muted small fw-bold mb-3">Descrizione del Progetto</h5>
-                        <p class="lead text-secondary mb-5 pb-4 text-center">
+                        <p class="lead text-secondary mb-md-5 pb-4 text-center">
                             {{ $project->description }}
                         </p>
 
