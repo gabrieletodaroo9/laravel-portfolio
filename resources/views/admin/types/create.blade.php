@@ -1,19 +1,19 @@
 @extends('admin.adminLayouts.dashboardLayout')
 
 @section('content')
-    <div class="container py-5">
-        <div class="mb-4">
+    <div class="container-fluid container-md py-3 py-md-5">
+        <div class="mb-md-4">
             <a href="{{ route('admin.types.index') }}" class="btn btn-outline-secondary btn-sm">
                 <i class="fa-solid fa-arrow-left"></i> Torna alla lista
             </a>
         </div>
 
-        <div class="card shadow-sm border mt-5">
+        <div class="card shadow-sm border mt-3 mt-md-5">
             <div class="card-header py-4 text-center">
                 <h2 class="text-secondary mb-0">Nuovo Tipo di Progetto</h2>
             </div>
 
-            <div class="card-body p-5 py-3">
+            <div class="card-body p-md-5 py-3">
                 <form action="{{ route('admin.types.store') }}" method="POST">
                     @csrf
 

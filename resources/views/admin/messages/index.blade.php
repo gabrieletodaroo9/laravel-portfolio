@@ -1,10 +1,10 @@
 @extends('admin.adminLayouts.dashboardLayout')
 
 @section('content')
-<div class="main-content container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
+<div class="main-content container py-2 py-md-5">
+    <div class="d-flex justify-content-between align-items-center mb-md-4">
         <div>
-            <h1 class="display-5 py-5 text-uppercase mb-0">Messaggi Ricevuti</h1>
+            <h1 class="display-5 py-4 py-md-5 text-uppercase mb-0">Messaggi</h1>
         </div>
         <span class="badge bg-dark text-white px-3 py-2 rounded-pill fs-6">
             Totale: {{ $messages->count() }}
@@ -16,25 +16,25 @@
             <table class="table table-hover align-middle mb-0">
                 <thead class="bg-light">
                     <tr class="text-secondary small text-uppercase">
-                        <th class="px-4 py-3">da</th>
-                        <th>Email</th>
-                        <th>Data</th>
+                        <th class="px-md-4">da</th>
+                        <th class="d-none d-md-table-cell">Email</th>
+                        <th class="d-none d-md-table-cell">Data</th>
                         <th class="text-end px-4">Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($messages as $msg)
                         <tr>
-                            <td class="px-4">
+                            <td class="px-md-4">
                                 <div class="fw-bold text-dark">{{ $msg->name }}</div>
                             </td>
-                            <td>
+                            <td class="d-none d-md-table-cell">
                                 <a href="mailto:{{ $msg->email }}" class="text-decoration-none text-orange">
                                     {{ $msg->email }}
                                 </a>
                             </td>
-                            <td class="text-secondary">
-                                {{ $msg->created_at->format('d/m/Y H:i') }}
+                            <td class="text-secondary d-none d-md-table-cell">
+                                {{ $msg->created_at->format('d/m H:i') }}
                             </td>
                             <td class="text-end px-4">
                                 <div class="d-flex justify-content-end gap-2">
@@ -78,7 +78,7 @@
 
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center py-5 text-secondary">
+                            <td colspan="4" class="text-center py-3 py-md-4 text-secondary">
                                 <i class="fa-solid fa-inbox fs-1 d-block mb-2"></i>
                                 Non ci sono messaggi disponibili.
                             </td>

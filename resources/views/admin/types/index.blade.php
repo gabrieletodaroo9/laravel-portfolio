@@ -1,14 +1,14 @@
 @extends('admin.adminLayouts.dashboardLayout')
 
 @section('content')
-    <div class="container py-5">
-        <div class="mb-5">
+    <div class="container py-4 py-md-5">
+        <div class="mb-3 mb-md-5">
             <h1 class="text-center display-4 text-uppercase">Tipologie progetti</h1>
         </div>
 
-        <a href="{{ route('admin.types.create') }}" class="btn btn-outline-success btn-sm mb-5">Aggiungi nuovo tipo</a>
+        <a href="{{ route('admin.types.create') }}" class="btn btn-outline-success btn-sm mb-3 mb-md-5">Aggiungi nuovo tipo</a>
 
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 g-md-5 mb-5">
             @foreach ($types as $type)
                 <div class="col">
                     <div class="card h-100 shadow-sm border-0" >

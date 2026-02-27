@@ -1,15 +1,15 @@
 @extends('admin.adminLayouts.dashboardLayout')
 
 @section('content')
-    <div class="container py-5">
+    <div class="container py-4 py-md-5">
 
-        <div class="mb-4">
+        <div class="mb-4 mb-md-5">
             <a href="{{ route('admin.technologies.index') }}" class="btn btn-outline-secondary btn-sm">
                 <i class="fa-solid fa-arrow-left"></i> Torna alla lista tecnologie
             </a>
         </div>
 
-        <div class="card shadow-sm border mt-5 overflow-hidden">
+        <div class="card shadow-sm border mt-md-5 overflow-hidden">
 
             <div class="card-header py-4">
                 <div class="d-flex justify-content-between align-items-center gap-3">
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="card-body p-5">
+            <div class="card-body p-md-5">
                 
                 @if($technology->description)
                     <div class="mb-5">

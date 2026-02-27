@@ -5,9 +5,10 @@
         <div class="mb-4 mb-md-5">
             <h1 class="text-center display-4 text-uppercase">I Miei Progetti</h1>
         </div>
-<div class="d-flex justify-content-center align-items-center">
-    <a href="{{ route('admin.projects.create') }}" class="btn btn-outline-success btn-sm mb-2 mb-md-5">Aggiungi nuovo progetto</a>
-</div>
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-outline-success btn-sm mb-2 mb-md-5">Aggiungi nuovo
+                progetto</a>
+        </div>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
             @foreach ($projects as $project)
@@ -34,8 +35,8 @@
                                     title="Vedi">
                                     <i class="bi-eye me-2"></i>Visualizza
                                 </a>
-                                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-sm btn-outline-warning"
-                                    title="Modifica">
+                                <a href="{{ route('admin.projects.edit', $project) }}"
+                                    class="btn btn-sm btn-outline-warning" title="Modifica">
                                     <i class=" bi-pen me-2"></i>Modifica
                                 </a>
                                 <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
@@ -63,7 +64,8 @@
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Annulla</button>
 
-                                                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                                                <form action="{{ route('admin.projects.destroy', $project) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Elimina

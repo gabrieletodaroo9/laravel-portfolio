@@ -1,18 +1,19 @@
 @extends('admin.adminLayouts.dashboardLayout')
 
 @section('content')
-    <div class="container py-5">
+    <div class="container py-4 py-md-5">
 
-        <h1 class="text-center display-4 text-uppercase mb-5">Tecnologie progetti</h1>
-        <a href="{{ route('admin.technologies.create') }}" class="btn btn-outline-success btn-sm mb-5">
+        <h1 class="text-center display-4 text-uppercase mb-3 mb-md-5">Tecnologie progetti</h1>
+        <a href="{{ route('admin.technologies.create') }}" class="btn btn-outline-success btn-sm mb-md-4">
             Aggiungi Tecnologia
         </a>
     </div>
     <div class="container">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 mb-5">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 g-md-5 mb-5">
             @foreach ($techs as $tech)
                 <div class="col">
-                    <div class="card bg-light h-100 shadow-sm border-0" style="border-top: 5px solid {{ $tech->color }} !important;">
+                    <div class="card bg-light h-100 shadow-sm border-0"
+                        style="border-top: 5px solid {{ $tech->color }} !important;">
                         <div class="card-body p-2 d-flex flex-column">
 
                             <div class="d-flex justify-content-center gap-4 align-items-start mb-3 py-3">

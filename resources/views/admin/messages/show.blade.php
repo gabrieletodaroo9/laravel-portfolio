@@ -1,7 +1,7 @@
 @extends('admin.adminLayouts.dashboardLayout')
 
 @section('content')
-<div class="main-content container py-5">
+<div class="main-content container py-4 py-md-5">
 
     <div class="mb-4">
         <a href="{{ route('admin.messages.index') }}" class="btn btn-outline-secondary btn-sm">
@@ -9,7 +9,7 @@
         </a>
     </div>
 
-    <div class="card shadow-sm border mt-5 overflow-hidden rounded-4">
+    <div class="card shadow-sm border mt-4 mt-md-5 overflow-hidden rounded-4">
 
         <div class="card-header py-4 bg-white">
             <div class="d-flex justify-content-between align-items-center gap-3">
@@ -19,12 +19,12 @@
                     </h3>
                 </div>
                 <span class="badge rounded-pill text-uppercase px-3 py-2 text-white bg-dark">
-                    Ricevuto il <strong>{{ $message->created_at->format('d/m/Y - H:i') }}</strong>
+                    Ricevuto il <strong>{{ $message->created_at->format('d/m - H:i') }}</strong>
                 </span>
             </div>
         </div>
 
-        <div class="card-body p-5">
+        <div class="card-body p-md-5">
             <div class="mb-4">
                 <p class="text-secondary small text-uppercase fw-bold mb-2">Email:</p>
                 <a href="mailto:{{ $message->email }}" class="h5 text-primary text-decoration-none">
@@ -32,11 +32,11 @@
                 </a>
             </div>
 
-            <hr class="my-5">
+            <hr class="my-4 my-md-5">
 
             <div class="message-content">
                 <p class="text-secondary small text-uppercase fw-bold">Contenuto:</p>
-                <div class="p-2 bg-light rounded-3 lead" style="white-space: pre-wrap; border: 1px solid #eee;">
+                <div class="p-2 bg-light rounded-3 lead" style=" border: 1px solid #eee;">
                     {{ $message->message }}
                 </div>
             </div>
